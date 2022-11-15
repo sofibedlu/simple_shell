@@ -15,6 +15,11 @@ extern char **environ;
 
 char *read_line();
 char **create_arg(char *line);
-int execute(char **argv);
-int create_proc(char **args);
+char **cp_env();
+char *path_var(char **list);
+char **path_directory(char *path1);
+char **check_input_cmd(char **argv, char **array);
+int execute(char **argv, char **array_str);
+int create_proc(char **args, char **array_str);
+void _free(char **buffer);
 #endif
