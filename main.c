@@ -12,6 +12,10 @@ int main(int ac, char **av)
 	char *line, *path;
 	char **arg, **array_str, **list;
 	int status;
+	builtin func[] = {
+		{"exit", exit_sh},
+		{NULL, NULL}
+	};
 
 	list = cp_env();
 	path = (path_var(list));
@@ -20,7 +24,7 @@ int main(int ac, char **av)
 		printf("$ ");
 		line = read_line();
 		arg = create_arg(line);
-		status = execute(arg, array_str);
+		status = execute(arg, array_str, func);
 		free(line);
 		free(arg);
 	} while (status);
@@ -35,8 +39,17 @@ int main(int ac, char **av)
  * @array_str: directories in the PATH variable
  * Return: integer
  */
-int execute(char **argv, char **array_str)
+int execute(char **argv, char **array_str, builtin func[])
 {
+	int i = 0;
+
+	for (i = 0; func[i].arg != NULL; i++)
+	{
+		if (strcmp(argv[0], func[i].arg) == 0)
+		{
+			return (func[i].fun());
+		}
+	}
 	return (create_proc(argv, array_str));
 }
 /**
@@ -73,4 +86,12 @@ int create_proc(char **args, char **array_str)
 		wait(&status);
 	}
 	return (1);
+}
+/**
+ * exit_sh - exit the shell
+ * Return: integer for the status
+ */
+int exit_sh()
+{
+	return (0);
 }

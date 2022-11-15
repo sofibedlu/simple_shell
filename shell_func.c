@@ -68,7 +68,7 @@ char **cp_env()
 	int size, i;
 
 	for (size = 0; environ[size] != NULL; size++)
-	list = malloc(size * sizeof(char *));
+	list = malloc((size + 1) * sizeof(char *));
 	if (list == NULL)
 	{
 		perror("can't allocate memory");
@@ -78,6 +78,7 @@ char **cp_env()
 	{
 		list[i] = strdup(environ[i]);
 	}
+	/*list[i] = NULL;*/
 	return (list);
 }
 /**
@@ -128,6 +129,6 @@ char **path_directory(char *path1)
 		token = strtok(NULL, ":");
 		i++;
 	}
-	dirc[i] = NULL;
+	/*dirc[i] = NULL;*/
 	return (dirc);
 }
