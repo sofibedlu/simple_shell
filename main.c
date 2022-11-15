@@ -14,6 +14,7 @@ int main(int ac, char **av)
 	int status;
 	builtin func[] = {
 		{"exit", exit_sh},
+		{"env", _env},
 		{NULL, NULL}
 	};
 
@@ -94,4 +95,19 @@ int create_proc(char **args, char **array_str)
 int exit_sh()
 {
 	return (0);
+}
+/**
+ * _env - print enviroment variable
+ * Return: integer for status
+ */
+int _env()
+{
+	int i = 0;
+
+	while (environ[i] != NULL)
+	{
+		printf("%s\n", environ[i]);
+		i++;
+	}
+	return (1);
 }
