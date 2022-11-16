@@ -30,7 +30,7 @@ int main(int ac, char **av)
 		free(arg);
 	} while (status);
 	free(array_str);
-	/*_free(list);*/
+	_free(list);
 	return (0);
 }
 /**

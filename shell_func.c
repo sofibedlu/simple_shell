@@ -68,6 +68,7 @@ char **cp_env()
 	int size, i;
 
 	for (size = 0; environ[size] != NULL; size++)
+		;
 	list = malloc(size * sizeof(char *));
 	if (list == NULL)
 	{
