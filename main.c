@@ -7,9 +7,7 @@
  */
 int main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
-	char *line, *path;
+	char *path, *line;
 	char **arg, **array_str, **list;
 	int status;
 	builtin func[] = {
@@ -18,6 +16,8 @@ int main(int ac, char **av)
 		{NULL, NULL}
 	};
 
+	(void)ac;
+	(void)av;
 	list = cp_env();
 	path = (path_var(list));
 	array_str = path_directory(path);
