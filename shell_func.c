@@ -2,10 +2,11 @@
 
 /**
  * read_line - read the input command
- *
+ * @list: environ copy
+ * @array_str: path directories
  * Return: pointer to the input command
  */
-char *read_line()
+char *read_line(char **list, char **array_str)
 {
 	char *line = NULL;
 	size_t n = 0;
@@ -15,6 +16,9 @@ char *read_line()
 		if (feof(stdin))
 		{
 			perror("end of file");
+			free(line);
+			free(array_str);
+			_free(list);
 			exit(EXIT_SUCCESS);
 		}
 		else

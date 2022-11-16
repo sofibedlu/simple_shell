@@ -23,7 +23,7 @@ int main(int ac, char **av)
 	array_str = path_directory(path);
 	do {
 		printf("$ ");
-		line = read_line();
+		line = read_line(list, array_str);
 		arg = create_arg(line);
 		status = execute(arg, array_str, func);
 		free(line);
