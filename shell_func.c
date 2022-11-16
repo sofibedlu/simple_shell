@@ -39,10 +39,6 @@ char **create_arg(char *line)
 	while (token != NULL)
 	{
 		argv[i] = token;
-		if (i >= BUFF)
-		{
-			argv = realloc(argv, i + BUFF);
-		}
 		token = strtok(NULL, DELI);
 		i++;
 	}
