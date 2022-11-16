@@ -2,8 +2,7 @@
 
 /**
  * read_line - read the input command
- * @list: environ copy
- * @array_str: path directories
+ *
  * Return: pointer to the input command
  */
 char *read_line()
@@ -13,21 +12,8 @@ char *read_line()
 
 	if (getline(&line, &n, stdin) == -1)
 	{
-		if (feof(stdin))
-		{
-			perror("end of file");
-			/*
-			 * free(line);
-			free(array_str);
-			_free(list);
-			*/
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			perror("can't read a line:");
-			exit(EXIT_FAILURE);
-		}
+		perror("can't read a line:");
+		exit(EXIT_FAILURE);
 	}
 	return (line);
 }
