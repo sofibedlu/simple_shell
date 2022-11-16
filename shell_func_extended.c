@@ -3,9 +3,10 @@
  * check_input_cmd - check the input command for its possible directories
  * @array: path directories
  * @argv: argument from getline
+ * @av: program name
  * Return: executable command and arguments
  */
-char **check_input_cmd(char **argv, char **array)
+char **check_input_cmd(char **argv, char **array, char **av)
 {
 	char buffer[1024];
 	struct stat st;
@@ -32,7 +33,7 @@ char **check_input_cmd(char **argv, char **array)
 		buffer[0] = '\0';
 		i++;
 	}
-	fprintf(stderr, "%s: command not found\n", argv[0]);
+	fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
 	return (NULL);
 }
 /**

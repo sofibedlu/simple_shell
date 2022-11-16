@@ -25,7 +25,7 @@ int main(int ac, char **av)
 		printf("$ ");
 		line = read_line();
 		arg = create_arg(line);
-		status = execute(arg, array_str, func);
+		status = execute(arg, array_str, func, av);
 		free(line);
 		free(arg);
 	} while (status);
@@ -39,9 +39,10 @@ int main(int ac, char **av)
  * @argv: user input command
  * @array_str: directories in the PATH variable
  * @func: structer for builtin functions
+ * @av: program name
  * Return: integer
  */
-int execute(char **argv, char **array_str, builtin func[])
+int execute(char **argv, char **array_str, builtin func[], char **av)
 {
 	int i = 0;
 
@@ -52,21 +53,22 @@ int execute(char **argv, char **array_str, builtin func[])
 			return (func[i].fun());
 		}
 	}
-	return (create_proc(argv, array_str));
+	return (create_proc(argv, array_str, av));
 }
 /**
  * create_proc - check the args and create process to execute the program
  * @args: user input command
  * @array_str: directories in the PATH variable
+ * @av: program name
  * Return: integer
  */
-int create_proc(char **args, char **array_str)
+int create_proc(char **args, char **array_str, char **av)
 {
 	pid_t pid;
 	int status;
 	char **argv;
 
-	argv = check_input_cmd(args, array_str);
+	argv = check_input_cmd(args, array_str, av);
 	if (argv == NULL)
 		return (1);
 	pid = fork();
