@@ -33,7 +33,7 @@ char **check_input_cmd(char **argv, char **array, char **av)
 		buffer[0] = '\0';
 		i++;
 	}
-	fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
+	printf("%s: 1: %s: not found\n", av[0], argv[0]);
 	return (NULL);
 }
 /**
