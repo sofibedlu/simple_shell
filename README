@@ -1,0 +1,7 @@
+# simple_shell project
+# this project performe the basics of shell program
+  it can handle-program with full path
+		with arguments
+		program only their names
+		exit - builtin command
+		env - builtin command

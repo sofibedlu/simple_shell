@@ -68,7 +68,7 @@ char **cp_env()
 	int size, i;
 
 	for (size = 0; environ[size] != NULL; size++)
-	list = malloc((size + 1) * sizeof(char *));
+	list = malloc(size * sizeof(char *));
 	if (list == NULL)
 	{
 		perror("can't allocate memory");
@@ -83,7 +83,7 @@ char **cp_env()
 }
 /**
  * path_var - search the path variable
- *
+ * @list: array of pointer for environ
  * Return: pointer to the value of PATH variable
  */
 char *path_var(char **list)
@@ -95,13 +95,13 @@ char *path_var(char **list)
 	token = strtok(_env[i], "=");
 	while (_env[i] != NULL)
 	{
-		i++;
 		if (strcmp(token, "PATH") == 0)
 		{
 			path = strtok(NULL, "=");
 			break;
 		}
 		token = strtok(_env[i], "=");
+		i++;
 	}
 	return (path);
 }

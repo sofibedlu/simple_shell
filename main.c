@@ -30,7 +30,7 @@ int main(int ac, char **av)
 		free(arg);
 	} while (status);
 	free(array_str);
-	_free(list);
+	/*_free(list);*/
 	return (0);
 }
 /**
@@ -38,6 +38,7 @@ int main(int ac, char **av)
  * aprogram found in the path variable
  * @argv: user input command
  * @array_str: directories in the PATH variable
+ * @func: structer for builtin functions
  * Return: integer
  */
 int execute(char **argv, char **array_str, builtin func[])
@@ -92,7 +93,7 @@ int create_proc(char **args, char **array_str)
  * exit_sh - exit the shell
  * Return: integer for the status
  */
-int exit_sh()
+int exit_sh(void)
 {
 	return (0);
 }
@@ -100,7 +101,7 @@ int exit_sh()
  * _env - print enviroment variable
  * Return: integer for status
  */
-int _env()
+int _env(void)
 {
 	int i = 0;
 
