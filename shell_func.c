@@ -2,6 +2,8 @@
 
 /**
  * read_line - read the input command
+ * @list: environ copy
+ * @array_str: directories in path variable
  *
  * Return: pointer to the input command
  */
