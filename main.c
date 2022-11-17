@@ -22,7 +22,8 @@ int main(int ac, char **av)
 	path = (path_var(list));
 	array_str = path_directory(path);
 	do {
-		printf("$ ");
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 		line = read_line();
 		arg = create_arg(line);
 		status = execute(arg, array_str, func, av);

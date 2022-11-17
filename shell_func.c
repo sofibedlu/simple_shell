@@ -14,11 +14,14 @@ char *read_line()
 	{
 		if (feof(stdin))
 		{
-			perror("end of file");
+			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		perror("can't read a line:");
-		exit(EXIT_FAILURE);
+		else
+		{
+			perror("can't read a line:");
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (line);
 }
