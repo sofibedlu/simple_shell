@@ -12,6 +12,11 @@ char *read_line()
 
 	if (getline(&line, &n, stdin) == -1)
 	{
+		if (feof(stdin))
+		{
+			perror("end of file");
+			exit(EXIT_SUCCESS);
+		}
 		perror("can't read a line:");
 		exit(EXIT_FAILURE);
 	}
