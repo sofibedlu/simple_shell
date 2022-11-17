@@ -65,7 +65,7 @@ char **cp_env()
 
 	for (size = 0; environ[size] != NULL; size++)
 		;
-	list = malloc(size * sizeof(char *));
+	list = malloc((size + 2) * sizeof(char *));
 	if (list == NULL)
 	{
 		perror("can't allocate memory");
@@ -75,7 +75,7 @@ char **cp_env()
 	{
 		list[i] = strdup(environ[i]);
 	}
-	/*list[i] = NULL;*/
+	list[i] = NULL;
 	return (list);
 }
 /**
