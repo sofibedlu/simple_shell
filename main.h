@@ -22,7 +22,7 @@ typedef struct built
 	char *arg;
 	int (*fun)();
 } builtin;
-char *read_line();
+char *read_line(char **list, char **array_str);
 char **create_arg(char *line);
 char **cp_env();
 char *path_var(char **list);

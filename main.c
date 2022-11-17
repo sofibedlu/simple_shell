@@ -24,7 +24,7 @@ int main(int ac, char **av)
 	do {
 		if (isatty(STDIN_FILENO))
 			printf("$ ");
-		line = read_line();
+		line = read_line(list, array_str);
 		arg = create_arg(line);
 		status = execute(arg, array_str, func, av);
 		free(line);
