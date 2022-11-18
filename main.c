@@ -13,7 +13,6 @@ int main(int ac, char **av)
 	builtin func[] = {
 		{"exit", exit_sh},
 		{"env", _env},
-		{"cd", cd_sh},
 		{NULL, NULL}
 	};
 
