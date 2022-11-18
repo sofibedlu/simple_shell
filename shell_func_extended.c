@@ -52,3 +52,14 @@ void _free(char **buffer)
 	free(buffer);
 }
 
+int cd_sh(char **argv)
+{
+	if (argv[1] == NULL)
+		perror("expected argument to \"cd\"\n");
+	else
+	{
+		if (chdir(argv[1]) != 0)
+			perror("directory not found");
+	}
+	return (1);
+}

@@ -30,7 +30,8 @@ char **path_directory(char *path1);
 char **check_input_cmd(char **argv, char **array, char **av);
 int execute(char **argv, char **array_str, builtin func[], char **av);
 int create_proc(char **args, char **array_str, char **av);
-int exit_sh(void);
-int _env(void);
+int exit_sh(char **argv);
+int _env(char **argv);
+int cd_sh(char **argv);
 void _free(char **buffer);
 #endif

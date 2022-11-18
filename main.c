@@ -13,6 +13,7 @@ int main(int ac, char **av)
 	builtin func[] = {
 		{"exit", exit_sh},
 		{"env", _env},
+		{"cd", cd_sh},
 		{NULL, NULL}
 	};
 
@@ -51,7 +52,7 @@ int execute(char **argv, char **array_str, builtin func[], char **av)
 	{
 		if (strcmp(argv[0], func[i].arg) == 0)
 		{
-			return (func[i].fun());
+			return (func[i].fun(argv));
 		}
 	}
 	return (create_proc(argv, array_str, av));
@@ -96,18 +97,20 @@ int create_proc(char **args, char **array_str, char **av)
  * exit_sh - exit the shell
  * Return: integer for the status
  */
-int exit_sh(void)
+int exit_sh(char **argv)
 {
+	(void)(argv);
 	return (0);
 }
 /**
  * _env - print enviroment variable
  * Return: integer for status
  */
-int _env(void)
+int _env(char **argv)
 {
 	int i = 0;
 
+	(void)argv;
 	while (environ[i] != NULL)
 	{
 		printf("%s\n", environ[i]);

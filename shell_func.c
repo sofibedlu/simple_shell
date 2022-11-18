@@ -19,6 +19,7 @@ char *read_line(char **list, char **array_str)
 			free(line);
 			free(array_str);
 			_free(list);
+			putchar('\n');
 			exit(EXIT_SUCCESS);
 		}
 		else
