@@ -95,6 +95,7 @@ int create_proc(char **args, char **array_str, char **av)
 }
 /**
  * exit_sh - exit the shell
+ * @argv: user command agrument
  * Return: integer for the status
  */
 int exit_sh(char **argv)
@@ -104,6 +105,7 @@ int exit_sh(char **argv)
 }
 /**
  * _env - print enviroment variable
+ * @argv: user command argument
  * Return: integer for status
  */
 int _env(char **argv)
