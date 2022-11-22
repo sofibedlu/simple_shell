@@ -16,6 +16,8 @@ char *read_line(char **list, char **array_str)
 	{
 		if (feof(stdin))
 		{
+			if (isatty(STDIN_FILENO))
+				printf("\n");
 			free(line);
 			free(array_str);
 			_free(list);
